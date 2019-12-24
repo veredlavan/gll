@@ -1,0 +1,1267 @@
+/* 
+  Name: GL
+  Author: 
+  Author URI: 
+  Version: 1.0.1
+  Date: 5780
+  License: commercal, not for redistrubution, reselling.
+*/  
+
+/* ------------------------------------------------------------------------------------
+--  RESET
+------------------------------------------------------------------------------------ */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, img, ins, kbd, q, s, samp,
+small, strike, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+/* ------------------------------------------------------------------------------------
+--  GENERAL 
+------------------------------------------------------------------------------------ */
+html, body{ 
+    width:100%;
+	margin: 0; 
+	padding: 0;
+	line-height:normal;
+	font-size:100%;
+	font-family: Palatino, Book Antiqua, serif;
+	color:#000;
+    background:#fff;
+}
+::selection{
+	color:#fff;
+	background:#000;
+}
+img{
+	max-width:100%;
+	height:auto;
+}
+a{
+	color:#444;	
+	text-decoration:none;
+    transition: 500ms ease-in; 	
+}
+a:hover, 
+a:focus{
+	color:#669BBC;
+}
+.centered-out{
+	position:absolute;
+	width:100%;
+	height:100%;
+ 	min-height:100%;
+	top:0;
+	right:0;
+    z-index:1;
+}
+.centered-inner{
+   display: table;
+   width: 100%;
+   height:100%;	
+}
+.centered-inner-inner{
+   display: table-cell;
+   vertical-align: middle;
+}
+/* Underline From Right */
+.hvr-underline-from-right {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  overflow: hidden;
+}
+.hvr-underline-from-right:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 100%;
+  right: 0;
+  bottom: 0;
+  background: #000;
+  height: 1px;
+  -webkit-transition-property: left;
+  transition-property: left;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.hvr-underline-from-right:hover:before, 
+.hvr-underline-from-right:focus:before, 
+.hvr-underline-from-right:active:before {
+  left: 0;
+}
+.feed-links{
+	display:none;
+	visibility:hidden;
+}
+/* ------------------------------------------------------------------------------------
+--  PRELOADER
+------------------------------------------------------------------------------------ */
+#preloader {
+	position:fixed;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	background-color:#fff; /* change if the mask should have another color then white */
+	z-index:100; /* makes sure it stays on top */
+}
+#status {
+	width:400px;
+	height:400px;
+	position:absolute;
+	left:50%; /* centers the loading animation horizontally one the screen */
+	top:50%; /* centers the loading animation vertically one the screen */
+	background-image:url(images/book.gif); /* path to your loading animation */
+	background-repeat:no-repeat;
+	background-position:center;
+	margin:-200px 0 0 -200px; /* is width and height divided by two */
+}
+/* ------------------------------------------------------------------------------------
+--  LAYOUT 
+------------------------------------------------------------------------------------ */
+#wrapper{
+	float:left;
+	width:100%;
+}
+.pass{
+	float:left;
+	width:100%;
+	padding:60px 0;
+}
+.middle{
+	display:table;
+	margin:0 auto;
+	width:76%;
+}
+/* ------------------------------------------------------------------------------------
+--  LAYOUT MAIN CATEGORIES NAVIGATION
+------------------------------------------------------------------------------------ */
+#pass1{
+	background:#dee6e8;
+}
+#main0 #Label1{
+	float:left;
+	width:100%;
+	margin-bottom:100px;		
+}
+#main0 #Label1 ul{
+	display:table;
+	margin:0 auto;
+	list-style:none;
+}
+#main0 #Label1 li{
+	 float:left;
+	 display:inline-block;
+	 margin:0 10px;
+	 text-transform:uppercase;
+	 font-size:1.2em;
+	 letter-spacing:0.2em;
+}
+#main0 #Label1 a{
+	display:inline-block;
+	padding:0 0 15px 0;
+	color:#fff;
+}
+#main0 #Label1 span{
+	color:#dee6e8;
+}
+#main0 #Label1 .hvr-underline-from-right::before {
+	background:#fff;
+}
+#main0 h2{
+	display:none;
+}
+/* ------------------------------------------------------------------------------------
+--  LAYOUT FULL WIDTH IMAGE HEADER
+------------------------------------------------------------------------------------ */
+#pass2{
+	background:#dee6e8;
+	padding:0;
+}
+#pass2 figure{
+	float:left;
+	width:100%;
+	position:relative;
+}
+#pass2 img{
+	float:left;
+	display:block;
+	width:100%!important;
+}
+/* ------------------------------------------------------------------------------------
+--  LAYOUT HEADER
+------------------------------------------------------------------------------------ */
+#m-header{
+	float:left;
+	width:100%;
+	box-sizing:border-box;
+	padding:0 40px;
+	position:absolute;
+	top:40px;	
+}
+#logo-place{
+	float:left;
+	width:20%;
+}
+#logo-place img{
+	display:block;
+}
+#pass2 nav{
+	float:right;
+	width:80%;
+}
+#pass2 nav .PageList ul{
+	float:right;
+	list-style:none;
+}
+#pass2 nav .PageList li{
+	float:left;
+}
+#pass2 nav .PageList a{
+	display:block;
+	padding:0 0 0 30px;
+     font-family: 'Philosopher', sans-serif;
+	text-transform:lowercase;
+	color:#fff;
+	font-size:1.2em;
+	font-weight:700;
+	font-style:italic;
+}
+#pass2 nav .PageList a:first-letter{
+	text-transform:capitalize;
+}
+#pass2 nav .PageList a:hover{
+    transform:scale(1.2);
+}
+/* ------------------------------------------------------------------------------------
+--  LAYOUT FEATURED POST ALL POSTS AND SIDEBAR
+------------------------------------------------------------------------------------ */
+#main2{
+	margin:-500px 0 0 0;
+}
+@media screen and (max-height: 900px) {
+#main2{
+	margin:-300px 0 0 0;
+  }
+}
+/* ------------------------------------------------------------------------------------
+--  LAYOUT Includes 3 widgets: IMAGE || FEATURED POST || TEXT 
+------------------------------------------------------------------------------------ */
+#main2 .Image img{
+    float:left;
+    display:block;
+    width:100%;
+    transition: 500ms ease-in; 	
+}
+#main2 .Image img:hover{
+	filter:saturate(140%);
+}
+/* ------------------------------------------------------------------------------------
+--  
+------------------------------------------------------------------------------------ */
+.FeaturedPost{
+	float:left;
+	width:100%;
+	background:#fff;
+	box-sizing:border-box;
+	padding:80px;
+	margin:0 0 30px 0;
+	text-align:justify;
+}
+.FeaturedPost h2.title{
+	display:none;
+}
+.FeaturedPost h3{
+     font-family: 'Philosopher', sans-serif;
+	 font-size:3em;
+     font-weight:700;
+     font-style: italic;
+     text-align:left;	
+     display:block;
+     border-bottom:1px solid #000;
+     margin:0 0 40px 0;
+     padding:0 0 40px 0;
+}
+.FeaturedPost p{
+	 float:left;
+	 display:block;
+	 width:60%;
+	 box-sizing:border-box;
+	 padding:0 40px 0 0;
+	 margin:0 0 40px 0;
+	 font-size:1.5em;
+	 line-height:1.3em;
+     -webkit-hyphens: auto;
+     -moz-hyphens: auto;
+     -ms-hyphens: auto;
+     hyphens: auto;
+}
+.FeaturedPost img{
+	float:right;
+	width:40%;
+	box-sizing:border-box;
+	padding-left:40px;
+	border-left:1px solid #000;
+}
+/* ------------------------------------------------------------------------------------
+--  
+------------------------------------------------------------------------------------ */
+#main2 .Text{
+	float:left;
+	width:70%;
+	background:#fff;
+	margin:-300px 0 30px 0;
+	position:relative;
+	box-sizing:border-box;
+	padding:0 40px 0 80px;
+	z-index:1;
+	text-align:justify;
+}
+#main2 .Text h2{
+     font-family: 'Philosopher', sans-serif;
+	 font-size:1.3em;
+     font-style: italic;
+     text-align:left;	
+     display:block;
+     border-bottom:1px solid #eee;
+     margin:0 0 20px 0;
+     padding:0 0 20px 0;
+}
+#main2 .Text .widget-content{
+	display:block;
+	position:relative;
+	padding:0 0 0 40px;
+	font-size:1.2em;
+	line-height:1.2em;
+	font-style:italic;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+}
+#main2 .Text .widget-content:before {
+    font-family: 'FontAwesome';
+    content: "\f2c4";
+    display:block;
+    padding-right: 10px;
+    vertical-align: middle;
+    font-size:22px;
+    font-style:normal!important;
+    position:absolute;
+    top:4px;
+    left:0;
+}
+/* ------------------------------------------------------------------------------------
+--  LAYOUT ALL POSTS AND SIDEBAR
+------------------------------------------------------------------------------------ */
+#pass3{
+	background:#fafafa;
+}
+.posts-block{
+	float:left;
+	width:56%;
+	box-sizing:border-box;
+	border-right:30px solid transparent;
+}
+.sidebar-wrap{
+	float:right;
+	width:44%;
+	margin:-140px 0 0 0;
+}
+/* ------------------------------------------------------------------------------------
+--  LAYOUT ALL POSTS 
+------------------------------------------------------------------------------------ */
+.blog-posts{
+	float:left;
+	width:100%;
+}
+.date-outer{	
+	float:left;
+    width:100%;
+    margin:0;
+    padding:40px 40px 4px 40px;
+    margin:0 0 30px 0;
+	box-sizing:border-box;
+    background:#fff;
+}
+.date-posts{
+	float:left;
+    width:100%;
+}
+/* ------------------------------------------------------------------------------------
+--  LAYOUT POST STYLES
+------------------------------------------------------------------------------------ */
+h2.date-header{
+	float:right;
+	display:block;
+	margin:0 0 20px 0;
+}
+h3.post-title{
+	display:block;
+    margin:0 0 40px 0;
+    padding:0 0 30px 0;
+	border-bottom:1px solid #eee;
+    font-family: 'Philosopher', sans-serif;
+	font-size:2.2em;
+    font-weight: 700;
+    font-style:italic;
+}
+h3.post-title:first-letter{
+	text-transform:uppercase;
+}
+.post-outer{
+	float:left;
+	width:100%;
+}
+.date-outer .entry-content{
+	float:left;
+    width:100%;
+	font-size:1.3em;
+	line-height:1.5em;
+    text-align:justify;
+}
+/* ------------------------------------------------------------------------------------
+--  LAYOUT POST STYLES
+------------------------------------------------------------------------------------ */
+.date-outer .entry-content p{
+	display:block;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+     hyphens: auto;
+}
+.date-outer .entry-content a{
+	color:#669BBC;
+}
+.date-outer .entry-content img{
+	 transition: 500ms ease-in;
+}
+.date-outer .entry-content img:hover{
+	filter: saturate(130%);
+}
+.entry-content .separator{
+	float:left;
+	width:100%;
+	padding:0;	
+}
+.entry-content h2,
+.entry-content h3,
+.entry-content h4{
+	display:block;
+    font-family: 'Philosopher', sans-serif;
+    line-height:normal;
+    margin:20px 0;
+    padding:0 0 20px 0;
+    border-bottom:1px solid #eee;
+}
+.entry-content h2{
+	font-size:1.4em;	
+}
+.entry-content h3{
+	font-size:1.3em;	
+}
+.entry-content h4{
+	font-size:1.2em;	
+}
+.entry-content b{
+	font-weight:700;
+}
+.entry-content i{
+	font-style:italic;
+}
+.entry-content p iframe{
+	width:100%;
+	height:600px;
+}
+.entry-content blockquote{
+	float:left;
+	width:100%;
+	box-sizing:border-box;
+	font-style:italic;
+	padding:0 30px;
+	border-left:4px solid #ffa259;
+    font-family: 'Philosopher', sans-serif;
+}
+.entry-content ul,
+.entry-content ol{
+	list-style-position:inside;
+	border-top:1px solid #ffa259;
+	padding:30px 0;
+}
+/* ------------------------------------------------------------------------------------
+--  LAYOUT POST COMMENTS HIDDEN (UNFINISHED)
+------------------------------------------------------------------------------------ */
+.post-comment-link{
+    display:none;
+    visibility:hidden;	
+}
+.comments{
+	float:left;
+    width:100%;	
+    display:none;
+    visibility:hidden;
+}
+#backlinks-container{
+	float:left;
+    width:100%;	
+    display:none;
+    visibility:hidden;
+}
+.comments h4{
+	float:left;
+	display:inline-block;
+	padding:10px;
+	border:1px solid #eee;
+	text-transform:uppercase;
+	font-weight:700;
+	font-size:0.9em;
+	text-align:center;
+}
+.comment-form{
+	float:left;
+    width:100%;
+	margin-top:20px;
+}
+.comment-form h4{
+	margin-bottom:20px;
+    font-family: 'Philosopher', sans-serif;
+    font-weight: 700;
+    font-style:italic;
+    text-transform:none;
+    font-size:1.3em;
+	padding:0;
+	border:none;
+	float:right!important;
+}
+/* ------------------------------------------------------------------------------------
+--  LAYOUT EXTRA STYLES (LIKE READ MORE, CATEGORIES AND SO ON)
+------------------------------------------------------------------------------------ */
+.jump-link{
+	float:left;
+    width:100%;
+    margin:30px 0 0 0;	
+}
+.jump-link a{
+	display:inline-block;
+	float:right;	
+	height:40px;
+	line-height:40px;
+	border:4px solid #ffa259;
+	padding:0 16px;
+	text-transform:uppercase;
+	font-weight:700;
+	letter-spacing:0.2em;
+	font-size:0.8em;
+}
+.jump-link a:hover{
+	color:inherit;
+	margin:0 30px 0 0;
+}
+.post-footer{
+	float:left;
+    width:100%;
+    margin:30px 0 0 0;	
+}
+.post-footer-wrap{
+	float:left;
+    width:100%;	
+}
+.post-footer-line{
+	float:left;
+    width:100%;
+    border-top:1px solid #eee;
+    padding:30px 0 30px 0;
+}
+.iconslabels i{
+	float:left;
+	display:inline-block;
+	margin-right:10px;	
+	font-size:2.4em;
+}
+.post-labels a{
+	float:left;
+	display:inline-block;
+	font-size:0.8em;
+	text-transform:uppercase;
+	font-weight:700;
+	line-height:normal;
+	padding:10px;
+	border:1px solid #eee;
+	margin:0 7px 7px 0;
+}
+/* ------------------------------------------------------------------------------------
+--  LAYOUT PAGE NAVIGATION
+------------------------------------------------------------------------------------ */
+.blog-pager-menu{
+	float:left;
+	width:100%;
+}
+.blog-pager-menu ul{
+	display:table;
+	margin:0 auto;
+	list-style:none;
+}
+.blog-pager-menu ul li{
+	float:left;
+	display:inline-block;
+	margin:0 7px;
+	text-transform:uppercase;
+	font-weight:700;
+	letter-spacing:0.2em;
+    font-family: 'Philosopher', sans-serif;
+}
+.blog-pager-menu ul li a{
+	display:block;
+	padding:10px;
+	border:4px solid #ffa259;
+	color:inherit;
+	font-size:0.8em;
+}
+/* ------------------------------------------------------------------------------------
+--  LAYOUT MIDDLE AND SIDEBAR COLUMNS
+------------------------------------------------------------------------------------ */
+.popposts{
+    float:left;
+    width:52%;
+	box-sizing:border-box;
+	border-right:30px solid transparent;
+}
+.sidebar-place{
+    float:left;
+    width:48%;
+	box-sizing:border-box;
+	background:#fff;
+	border:1px solid #eee;
+	padding:20px 20px 0 20px;		
+}
+/* ------------------------------------------------------------------------------------
+--  LAYOUT MIDDLE COLUMN GENERAL
+------------------------------------------------------------------------------------ */
+.popposts ul{
+	float:left;
+	width:100%;
+	list-style:none;
+}
+.popposts h2{
+	float:left;
+	display:block;
+    margin:0 0 30px 0;
+    font-family: 'Philosopher', sans-serif;
+	font-size:1.6em;
+    font-weight: 700;
+    font-style:italic;
+}
+.popposts img{
+	 transition: 500ms ease-in;
+	 display:block;	
+}
+.popposts img:hover{
+	filter: saturate(130%);
+}
+/* ------------------------------------------------------------------------------------
+--  LAYOUT MIDDLE COLUMN POPULAR POSTS WIDGET 
+------------------------------------------------------------------------------------ */
+.popposts .PopularPosts ul{
+	padding:0 0 10px 0;
+	margin:0 0 30px 0;
+	border-bottom:1px solid #eee;
+}
+.popposts .PopularPosts ul li{
+	float:left;
+	width:100%;
+	box-sizing:border-box;	
+	padding:20px 20px 20px 0!important;
+	background:#dee6e8;
+	margin:0 0 15px 0;
+	position:relative;
+}
+.PopularPosts .item-thumbnail{
+	float:left;
+	width:26%;
+	padding-right:0!important;
+    margin: 0!important;
+}
+@media screen and (max-width: 1440px) {
+.PopularPosts .item-thumbnail{
+	width:30%;
+  }
+}
+.PopularPosts img {
+    padding-right: 0!important;
+}
+.PopularPosts .item-title{
+	float:right;
+	width:74%;
+}
+@media screen and (max-width: 1440px) {
+.PopularPosts .item-title{
+	width:70%;
+  }
+}
+.PopularPosts .item-title a{
+	display:block;
+    font-weight:700;
+    font-size:1.4em;
+    line-height:1.2em;
+    font-family: 'Philosopher', sans-serif;
+    font-style:italic;
+}
+.PopularPosts .item-snippet{
+	font-size:1.2em;
+    line-height:1.3em;
+    text-align:justify;
+    display:none;
+    visibility:hidden;
+}
+.PopularPosts .item-snippet p{
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+     hyphens: auto;	
+}
+/* ------------------------------------------------------------------------------------
+--  LAYOUT MIDDLE COLUMN IMAGE WIDGET 
+------------------------------------------------------------------------------------ */
+.popposts .Image img{
+	display:block;
+}
+.popposts .Image .caption{
+	display:table;
+	margin:0 auto;
+	text-transform:uppercase;
+}
+/* ------------------------------------------------------------------------------------
+--  LAYOUT MIDDLE COLUMN LINKS WIDGET 
+------------------------------------------------------------------------------------ */
+.popposts .LinkList ul {
+	margin:0 0 30px 0;
+	padding:0 0 20px 0;
+	border-bottom:1px solid #eee;
+}
+.popposts .LinkList ul li{
+	float:left;
+	width:100%;
+	margin:0 0 10px 0;
+}
+.popposts .LinkList a{
+	font-size:1.3em;
+	line-height:normal;	
+}
+.popposts .LinkList a:hover{
+	padding-left:20px;
+}
+.popposts .LinkList a:before{
+    font-family: 'FontAwesome';
+    display: inline-block;
+    padding-right: 10px;
+    vertical-align: top;	
+}
+.popposts .LinkList li:nth-child(1) a:before {
+    content: "\f226";
+}
+.popposts .LinkList li:nth-child(2) a:before {
+    content: "\f224";
+}
+/* ------------------------------------------------------------------------------------
+--  LAYOUT SIDEBAR 
+------------------------------------------------------------------------------------ */
+.sidebar-place .widget{
+	float:left;
+	width:100%;
+	margin:0 0 20px 0;	
+}
+.sidebar-place .widget h2{
+	display:block;
+    margin:0 0 20px 0;
+    padding:0 0 20px 0;
+    border-bottom:1px solid #eee;
+    font-family: 'Philosopher', sans-serif;
+	font-size:1.5em;
+    font-weight: 700;
+    font-style:italic;
+    text-transform:lowercase;
+    line-height:normal;	
+}
+.sidebar-place .widget h2:first-letter{
+	text-transform:capitalize;
+}
+/* ------------------------------------------------------------------------------------
+--  LAYOUT SIDEBAR WIDGETS SEARCH
+------------------------------------------------------------------------------------ */
+.widget form{
+    float:left;
+    width:100%;
+    clear:both;	
+}
+.input-place{
+	float:left;
+	width:80%;
+	height:36px;
+}
+.button-place{
+	float:right;
+	width:20%;
+	box-sizing:border-box;
+	border-left:20px solid transparent;
+	height:36px;
+	text-align:right!;
+}
+.widget form#searchform input[type=text]{
+	float:left;
+	width:100%;
+	padding:0 0 10px 0;
+	background:transparent;
+	outline:none;
+	border-radius:0;
+	border:none;
+	border-bottom:1px solid #000;
+	font-family:'Monaco', monospace;
+	text-transform:uppercase;
+	color:#000;
+	font-size:1.1em;
+	font-weight:700;
+}
+.widget form input[type=text]:-webkit-autofill,
+.widget form input[type=text]:-webkit-autofill:hover,
+.widget form input[type=text]:-webkit-autofill:focus,
+.widget form input[type=text]:-webkit-autofill:active {
+ -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+}
+.widget form#searchform button[type=submit]{
+      border:0;
+      background:none;
+      outline:none;
+}
+.widget form#searchform i.fa-search-plus{
+    font-size: 30px;
+    cursor: pointer;
+}
+/* ------------------------------------------------------------------------------------
+--  LAYOUT SIDEBAR WIDGETS CATEGORIES
+------------------------------------------------------------------------------------ */
+#sidebar-right-1 .list-label-widget-content{
+	float:left;
+	width:100%;		
+}
+#sidebar-right-1 .list-label-widget-content ul{
+	float:left;
+	width:100%;	
+	list-style:none;
+}
+#sidebar-right-1 .list-label-widget-content ul li{
+	 float:left;
+	 width:100%;
+	 margin:0 0 14px 0;
+}
+#sidebar-right-1 .list-label-widget-content ul li span,
+#sidebar-right-1 .list-label-widget-content ul li a{
+	 text-transform:uppercase;
+	 letter-spacing:0.2em;
+	 font-weight:700;	
+}
+#sidebar-right-1 .list-label-widget-content ul li span:nth-child(odd){
+	 float:left;
+}
+#sidebar-right-1 .list-label-widget-content ul li span:nth-child(even){
+	 float:right;
+}
+/* ------------------------------------------------------------------------------------
+--  LAYOUT SIDEBAR WIDGETS WIKIPEDIA
+------------------------------------------------------------------------------------ */
+.wikipedia-search-main-container{
+	float:left;
+	width:100%;
+	margin:0;
+	padding:0;
+}
+.wikipedia-searchtable{
+	float:left;
+	width:100%;
+}	
+.wikipedia-searchtable a{
+	float:left;
+	display:inline-block;
+	width:60px;
+}
+.wikipedia-search-button {
+   background-color: #000;
+   border: 1px solid #000;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+   border-radius: 0px;
+   cursor:pointer;
+}
+.wikipedia-input-box{
+	float:left;
+	width:100%;
+	margin:0 0 20px 0;
+}
+form#Wikipedia1_wikipedia-search-form input[type=text]{
+	float:left;
+	width:100%;
+	margin:5px 0 0 0;
+	padding:0 0 10px 0;
+	width:100%;
+	background:transparent;
+	outline:none;
+	border-radius:0;
+	border:none;
+	border-bottom:1px solid #000;
+	font-family:'Monaco', monospace;
+	text-transform:uppercase;
+	color:#000;
+	font-size:1.1em;
+	font-weight:700;
+}
+.wikipedia-search-input:hover {
+    border: 1px solid transparent;
+    border-top: 1px solid transparent;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.0);
+    -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.0);
+    -ms-box-shadow: inset 0 1px 2px rgba(0,0,0,.0);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.0);
+}
+.wikipedia-search-results-header{
+	float:left;
+	width:100%;
+	font-size:1.3em;
+	padding-bottom:10px;
+	border-bottom:1px solid #eee;	
+	height:auto;
+	margin-bottom:15px;
+}
+/* ------------------------------------------------------------------------------------
+--  LAYOUT SIDEBAR WIDGET IMAGE
+------------------------------------------------------------------------------------ */
+.sidebar-place .Image img{
+	float:left;
+	display:block;
+	box-sizing:border-box;
+	background:#fff;
+	border:1px solid #eee;
+	padding:10px;	
+}
+/* ------------------------------------------------------------------------------------
+--  LAYOUT SIDEBAR WIDGET HTML
+------------------------------------------------------------------------------------ */
+.HTML .widget iframe{
+	width:100%;
+	height:100%;
+	min-height:100%;
+	margin:0 0 30px 0;
+}
+.video-holder{
+	float:left;
+	width:100%;
+	margin:0;
+	box-sizing:border-box;
+	background:#fff;
+	border:1px solid #eee;
+	padding:10px;
+}
+.video-container {
+	position: relative;
+	padding-bottom: 56.2%;
+	width:100%;
+	height: 0;
+	overflow: hidden;
+}
+.video-container iframe,  
+.video-container object,  
+.video-container embed {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+/* ------------------------------------------------------------------------------------
+--  LAYOUT SIDEBAR WIDGET CONTACT FORM
+------------------------------------------------------------------------------------ */
+.ContactForm form{
+	float:left;
+	width:100%;	
+}
+.ContactForm .contact-form-widget{
+	float:left;
+	font-size:1.1em;
+	font-weight:700;
+}
+.ContactForm input[type=text],
+.ContactForm textarea{
+	padding:20px 0;
+	border:1px solid #fff;
+	border-bottom:1px solid #000;
+	margin:0 0 15px 0;
+	outline:none;
+	border-radius:0;
+	font-family:'Monaco', monospace;
+	font-size:1em;
+}
+.ContactForm input[type=text]:hover,
+.ContactForm textarea:hover{
+	border-top:1px solid #fff;
+	border-left:1px solid #fff;
+	border-right:1px solid #fff;
+	border-bottom:1px solid #000;
+	box-shadow:0 0 0px 1000px white inset !important;
+   -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+}
+.ContactForm input[type=button]{
+    background: #000;
+    cursor:pointer;
+ 	outline:none;
+	border-radius:0;
+    font-size: 20px;
+    height: 44px;
+    width: 130px;
+    border:none;	
+    border-bottom:4px solid #ffa259;
+    font-family:'Philosopher', sans-serif;
+}
+.ContactForm input[type=button]:hover{
+    background-color: #ffa259;
+    border:none;
+    border-bottom:4px solid #000;	
+}
+.contact-form-button-submit{
+   background-color: #000;	
+}
+/* ------------------------------------------------------------------------------------
+--  LAYOUT SEARCH RESULTS
+------------------------------------------------------------------------------------ */
+.status-msg-wrap-custom{
+	float:left;
+	width:100%;
+	box-sizing:border-box;
+	padding:40px;
+	border-bottom:1px solid #eee;
+	text-align:center;
+	font-size:2em;	
+	background:#fff;
+}
+.status-msg-wrap-custom b{
+	font-weight:700;
+}
+.status-msg-wrap-custom a{
+	display:block;
+	color:#669BBC;
+}
+/* ------------------------------------------------------------------------------------
+--  LAYOUT FOOTER
+------------------------------------------------------------------------------------ */
+#pass5{
+	background:#dee6e8;	
+	text-align:justify;
+}
+#pass5 blockquote{
+	padding-left:80px;
+    font-family:'Philosopher', sans-serif;
+    font-size:1.6em;
+    line-height:1.3em;	
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+     hyphens: auto;	
+     position:relative;
+}
+#pass5 cite{
+	float:right;
+	font-size:1.4em;
+	font-style:italic;
+}
+#pass5 blockquote:before{
+	content:'\f10d';
+    font-family: 'FontAwesome';
+    font-size:60px;
+    color:#ffa259;
+    display: block;
+    padding-right: 10px;
+    vertical-align: middle;
+    position:absolute;
+    top:10px;
+    left:0;		
+}
+#pass4{
+	background:#0d85d1 url(images/pattern.png) repeat;
+	min-height:60px;
+	border-top:4px solid #fff;
+	position:relative;
+}
+.footer-inner{
+	float:left;
+	box-sizing:border-box;
+}
+.footer-inner:nth-child(1){
+	width:40%;
+	border-right:60px solid transparent;
+}
+.footer-inner:nth-child(2){
+	width:20%;
+}
+.footer-inner:nth-child(3){
+	width:40%;	
+	border-left:60px solid transparent;
+}
+.footer-inner .widget{
+	float:left;
+	width:100%;
+	color:#fff;
+	box-sizing:border-box;
+	text-align:justify;
+}
+.footer-inner .widget h2{
+	display:block;
+	width:100%;
+    margin:0 0 30px 0;
+    padding:0 0 20px 0;
+    border-bottom:1px solid rgba(233,236,245,0.5);
+    font-family: 'Philosopher', sans-serif;
+	font-size:2.2em;
+    font-weight: 700;
+    font-style:italic;
+    text-transform:lowercase;		
+}
+.footer-inner .widget h2:first-letter{
+	text-transform:capitalize;
+}
+.footer-inner:nth-child(3) .widget{
+	margin-bottom:30px!important;
+}
+/* ------------------------------------------------------------------------------------
+--  LAYOUT FOOTER WIDGETS
+------------------------------------------------------------------------------------ */
+#pass4 .Text .widget-content{
+	font-size:1.2em;
+	line-height:1.3em;
+     -webkit-hyphens: auto;
+     -moz-hyphens: auto;
+     -ms-hyphens: auto;
+     hyphens: auto;
+}
+#pass4 .Header #header-inner{
+	background-size:contain;
+    width: 100%;
+    min-height: auto;
+    height: auto;
+}
+#pass4 .Stats{
+    border-top:1px solid rgba(233,236,245,0.5);
+    padding:30px 0 0 0;
+    margin:30px 0 0 0;	
+    text-align:center;
+}
+.Stats h2{
+    margin:0 0 5px 0!important;
+    padding:0!important;
+    border-bottom:none!important;
+	font-size:1.2em!important;	
+}
+#pass4 .Stats span{
+	display:table;
+	margin:0 auto;
+}
+.Stats .blog-admin{
+	visibility:hidden!important;
+}
+#pass4 .PageList ul{
+	float:left;
+	width:100%;	
+	list-style:none;
+}
+#pass4 .PageList  ul li{
+	 float:left;
+	 width:100%;
+	 margin:0 0 10px 0;
+}
+#pass4 .PageList ul li a{
+	 display:block;
+	 text-transform:lowercase;
+	 font-weight:700;
+	 color:#fff;	
+	 font-size:1.2em;
+	 line-height:normal;
+}
+#pass4 .PageList ul li a:first-letter{
+	 text-transform:capitalize;
+}
+#pass4 .FollowByEmail{
+	 float:left;
+	 width:100%;	
+}
+#pass4 .FollowByEmail input[type=text]{
+	background:transparent;
+	padding:10px 0;
+	border:none;
+	border-bottom:1px solid rgba(233,236,245,0.5);
+	outline:none;
+	border-radius:0;
+	color:#fff;
+	font-size:1.3em;
+	font-family:'Monoco', monospace;
+}
+::placeholder{
+	color:#fff;	
+}
+#pass4 .FollowByEmail input[type=submit]{
+    font-size: 20px;
+    height: 46px;
+    width: 120px;
+    font-family:'Philosopher', sans-serif;
+}
+/* ------------------------------------------------------------------------------------
+--  LAYOUT FOOTER CREDITS
+------------------------------------------------------------------------------------ */
+#credits{
+	float:left;
+	width:60%;
+	text-align:center;
+	color:#fff;
+	text-transform:uppercase;
+	font-weight:700;
+	letter-spacing:0.4em;
+	margin:40px 20% 0 20%;
+	padding:20px 0;
+	border-top:1px solid rgba(233,236,245,0.5);
+	border-bottom:1px solid rgba(233,236,245,0.5);
+}
+.scroll{
+	position:absolute;
+	right:50px;
+	bottom:50px;
+	color:#fff;
+	font-size:30px;
+}
+/* ------------------------------------------------------------------------------------
+--  POST STYLES
+------------------------------------------------------------------------------------ */
